@@ -1,84 +1,84 @@
 {
-  "name": "hybrid-line-numbers",
-  "displayName": "Hybrid Line Numbers",
-  "description": "Toggle between absolute and relative line numbers in VS Code",
-  "version": "0.0.2",
-  "publisher": "currybab",
-  "packageManager": "pnpm@9.15.2",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/currybab/vscode-hybrid-line-numbers"
-  },
-  "icon": "images/icon.png",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.84.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "keywords": [
-    "line numbers",
-    "relative",
-    "absolute",
-    "hybrid",
-    "line navigation"
-  ],
-  "activationEvents": [
-    "onCommand:hybrid-line-numbers.toggle",
-    "onCommand:hybrid-line-numbers.gotoLine"
-  ],
-  "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "hybrid-line-numbers.toggle",
-        "title": "Toggle Line Numbers Mode (Absolute/Relative)"
-      },
-      {
-        "command": "hybrid-line-numbers.gotoLine",
-        "title": "Go to Line (Hybrid)"
-      }
+    "name": "hybrid-line-numbers",
+    "displayName": "Hybrid Line Numbers",
+    "description": "Toggle between absolute and relative line numbers in VS Code",
+    "version": "0.0.3",
+    "publisher": "currybab",
+    "packageManager": "pnpm@9.15.2",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/currybab/vscode-hybrid-line-numbers"
+    },
+    "icon": "images/icon.png",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.84.0"
+    },
+    "categories": [
+        "Other"
     ],
-    "keybindings": [
-      {
-        "command": "hybrid-line-numbers.gotoLine",
-        "key": "ctrl+g",
-        "mac": "alt+g",
-        "when": "editorTextFocus"
-      }
+    "keywords": [
+        "line numbers",
+        "relative",
+        "absolute",
+        "hybrid",
+        "line navigation"
     ],
-    "configuration": {
-      "title": "Hybrid Line Numbers",
-      "properties": {
-        "hybridLineNumbers.enabled": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable/disable hybrid line numbers"
+    "activationEvents": [
+        "onCommand:hybrid-line-numbers.toggle",
+        "onCommand:hybrid-line-numbers.gotoLine"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "hybrid-line-numbers.toggle",
+                "title": "Toggle Line Numbers Mode (Absolute/Relative)"
+            },
+            {
+                "command": "hybrid-line-numbers.gotoLine",
+                "title": "Go to Line (Hybrid)"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "hybrid-line-numbers.gotoLine",
+                "key": "ctrl+g",
+                "mac": "alt+g",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": {
+            "title": "Hybrid Line Numbers",
+            "properties": {
+                "hybridLineNumbers.enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable/disable hybrid line numbers"
+                }
+            }
         }
-      }
+    },
+    "scripts": {
+        "vscode:prepublish": "pnpm run build",
+        "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+        "watch": "pnpm run build -- --watch",
+        "compile": "tsc -p ./",
+        "watch-tsc": "tsc -watch -p ./",
+        "package": "pnpm vsce package --no-dependencies",
+        "publish": "pnpm vsce publish --no-dependencies",
+        "test": "node ./dist/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/node": "^18.x",
+        "@types/vscode": "^1.84.0",
+        "@typescript-eslint/eslint-plugin": "^6.13.1",
+        "@typescript-eslint/parser": "^6.13.1",
+        "@vscode/vsce": "^3.2.1",
+        "esbuild": "^0.19.0",
+        "eslint": "^8.54.0",
+        "eslint-config-prettier": "^9.1.0",
+        "prettier": "^3.1.0",
+        "typescript": "^5.3.2"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "pnpm run build",
-    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
-    "watch": "pnpm run build -- --watch",
-    "compile": "tsc -p ./",
-    "watch-tsc": "tsc -watch -p ./",
-    "package": "pnpm vsce package --no-dependencies",
-    "publish": "pnpm vsce publish --no-dependencies",
-    "test": "node ./dist/test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/node": "^18.x",
-    "@types/vscode": "^1.84.0",
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
-    "@vscode/vsce": "^3.2.1",
-    "esbuild": "^0.19.0",
-    "eslint": "^8.54.0",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.1.0",
-    "typescript": "^5.3.2"
-  }
 }

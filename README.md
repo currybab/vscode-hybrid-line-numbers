@@ -53,11 +53,11 @@ This extension contributes the following commands:
 
 ## Release Notes
 
-See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
+See [CHANGELOG.md](https://github.com/currybab/vscode-hybrid-line-numbers/blob/main/CHANGELOG.md) for detailed release notes.
 
 ## Feedback & Contributions
 
-- File issues at [GitHub repository](https://github.com/YOUR_USERNAME/hybrid-line-numbers)
+- File issues at [GitHub repository](https://github.com/currybab/vscode-hybrid-line-numbers/issues)
 - Contributions are always welcome!
 
 ## License

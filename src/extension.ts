@@ -1,56 +1,29 @@
 import * as vscode from 'vscode';
 
 let hybridMode = false;
-let originalLineNumbersConfig: string | undefined;
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
     console.log('Hybrid Line Numbers is now active!');
 
     // Register toggle command
-    let toggleDisposable = vscode.commands.registerCommand('hybrid-line-numbers.toggle', () => {
+    const toggleDisposable = vscode.commands.registerCommand('hybrid-line-numbers.toggle', () => {
         hybridMode = !hybridMode;
         const editor = vscode.window.activeTextEditor;
         if (!editor) return;
 
         const config = vscode.workspace.getConfiguration('editor', editor.document.uri);
-        const workbenchConfig = vscode.workspace.getConfiguration('workbench');
 
         if (hybridMode) {
-            // Store original line numbers setting
-            originalLineNumbersConfig = config.get('lineNumbers');
             // Set to relative line numbers
             config.update('lineNumbers', 'relative', vscode.ConfigurationTarget.Global);
-            // Change line number colors using theme colors
-            workbenchConfig.update(
-                'colorCustomizations',
-                {
-                    'editorLineNumber.foreground': new vscode.ThemeColor(
-                        'editorLineNumber.foreground'
-                    ),
-                    'editorLineNumber.activeForeground': new vscode.ThemeColor(
-                        'editorLineNumber.activeForeground'
-                    ),
-                },
-                vscode.ConfigurationTarget.Global
-            );
         } else {
-            // Restore original line numbers setting
-            config.update(
-                'lineNumbers',
-                originalLineNumbersConfig || 'on',
-                vscode.ConfigurationTarget.Global
-            );
-            // Reset line number colors
-            workbenchConfig.update(
-                'colorCustomizations',
-                undefined,
-                vscode.ConfigurationTarget.Global
-            );
+            // Set back to absolute line numbers
+            config.update('lineNumbers', 'on', vscode.ConfigurationTarget.Global);
         }
     });
 
     // Register goto line command
-    let gotoLineDisposable = vscode.commands.registerCommand(
+    const gotoLineDisposable = vscode.commands.registerCommand(
         'hybrid-line-numbers.gotoLine',
         async () => {
             const editor = vscode.window.activeTextEditor;
@@ -98,19 +71,12 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(toggleDisposable, gotoLineDisposable);
 }
 
-export function deactivate() {
+export function deactivate(): void {
     const editor = vscode.window.activeTextEditor;
     if (editor) {
         const config = vscode.workspace.getConfiguration('editor', editor.document.uri);
-        const workbenchConfig = vscode.workspace.getConfiguration('workbench');
 
-        // Restore original line numbers setting
-        config.update(
-            'lineNumbers',
-            originalLineNumbersConfig || 'on',
-            vscode.ConfigurationTarget.Global
-        );
-        // Reset line number colors
-        workbenchConfig.update('colorCustomizations', undefined, vscode.ConfigurationTarget.Global);
+        // Set back to absolute line numbers
+        config.update('lineNumbers', 'on', vscode.ConfigurationTarget.Global);
     }
 }
