@@ -65,7 +65,8 @@
     "watch": "pnpm run build -- --watch",
     "compile": "tsc -p ./",
     "watch-tsc": "tsc -watch -p ./",
-    "pretest": "pnpm run build",
+    "package": "pnpm vsce package --no-dependencies",
+    "publish": "pnpm vsce publish --no-dependencies",
     "test": "node ./dist/test/runTest.js"
   },
   "devDependencies": {
