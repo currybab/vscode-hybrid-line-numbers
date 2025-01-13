@@ -2,12 +2,27 @@
   "name": "hybrid-line-numbers",
   "displayName": "Hybrid Line Numbers",
   "description": "Toggle between absolute and relative line numbers in VS Code",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "currybab",
+  "packageManager": "pnpm@9.15.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/currybab/vscode-hybrid-line-numbers"
+  },
+  "icon": "images/icon.png",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.84.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "line numbers",
+    "relative",
+    "absolute",
+    "hybrid",
+    "line navigation"
   ],
   "activationEvents": [
     "onCommand:hybrid-line-numbers.toggle",
@@ -54,14 +69,15 @@
     "test": "node ./dist/test/runTest.js"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^18.x",
     "@types/vscode": "^1.84.0",
-    "@typescript-eslint/eslint-plugin": "^8.19.1",
-    "@typescript-eslint/parser": "^8.19.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "@vscode/vsce": "^3.2.1",
     "esbuild": "^0.19.0",
-    "eslint": "^9.18.0",
+    "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.4.2",
-    "typescript": "^5.0.0"
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
   }
 }

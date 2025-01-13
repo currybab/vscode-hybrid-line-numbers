@@ -1,36 +1,65 @@
-# Hybrid Line Numbers
+# Hybrid Line Numbers for VS Code
 
-A VS Code extension that implements Vim-style hybrid line numbers. Shows absolute line number for the current line and relative line numbers for other lines.
+Seamlessly switch between absolute and relative line numbers with a single command. Perfect for developers who need both numbering styles in their workflow.
+
+![Demo](https://img.buidl.day/demo.gif)
 
 ## Features
 
-- Toggle hybrid line numbers using the command palette (`Hybrid Line Numbers: Toggle`)
-- Current line shows absolute line number in yellow
-- Other lines show relative distance from current line in gray
-- Configuration persists between sessions
+### 🔄 Dynamic Line Number Toggle
+
+- **One-Click Switch**: Instantly toggle between absolute and relative line numbers
+- **Context-Aware**: Use absolute numbers when discussing code, relative numbers for quick navigation
+- **Preserves Settings**: Remembers your original line number settings when deactivated
+
+### 🎯 Enhanced Go to Line
+
+- Jump to any line using absolute or relative numbers
+- Use `+N` or `-N` for relative jumps (e.g., `+5` to jump 5 lines down)
+- Perfect complement to relative line numbers for precise navigation
 
 ## Usage
 
-1. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS) to open the command palette
-2. Type "Toggle Hybrid Line Numbers" and press Enter
-3. The line numbers will switch to hybrid mode
+### Toggle Line Numbers
 
-## Configuration
+1. Press `Cmd/Ctrl + Shift + P` to open the command palette
+2. Type "Toggle Line Numbers Mode" and select the command
 
-You can enable/disable hybrid line numbers in your VS Code settings:
+### Go to Line
 
-```json
-{
-    "hybridLineNumbers.enabled": true
-}
-```
+1. Press `Alt/Option + G` (default keybinding)
+2. Type a number for absolute jump (e.g., "15")
+3. Or type +/- for relative jump (e.g., "+5" or "-3")
 
-## Requirements
+## Why Hybrid Line Numbers?
 
-VS Code version 1.84.0 or higher
+- **Code Reviews**: Use absolute numbers when referencing specific lines in pull requests
+- **Efficient Navigation**: Switch to relative numbers for quick up/down movements
+- **Best of Both Worlds**: No need to choose between absolute and relative - have both at your fingertips
+
+## Installation
+
+1. Open VS Code
+2. Go to Extensions (Cmd/Ctrl + Shift + X)
+3. Search for "Hybrid Line Numbers"
+4. Click Install
 
 ## Extension Settings
 
-This extension contributes the following settings:
+This extension contributes the following commands:
 
-* `hybridLineNumbers.enabled`: Enable/disable hybrid line numbers
+- `hybrid-line-numbers.toggle`: Toggle between absolute and relative line numbers
+- `hybrid-line-numbers.gotoLine`: Open enhanced Go to Line dialog
+
+## Release Notes
+
+See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
+
+## Feedback & Contributions
+
+- File issues at [GitHub repository](https://github.com/YOUR_USERNAME/hybrid-line-numbers)
+- Contributions are always welcome!
+
+## License
+
+This extension is licensed under the [MIT License](LICENSE).
